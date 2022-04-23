@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossCutting", "CrossCuttin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{1C291C69-B802-4017-BD91-7BFEB6F59112}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Tests", "Application.Tests\Application.Tests.csproj", "{7E5CAF2C-20AE-42B0-B54B-6FC1B6F077C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,5 +60,9 @@ Global
 		{1C291C69-B802-4017-BD91-7BFEB6F59112}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C291C69-B802-4017-BD91-7BFEB6F59112}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C291C69-B802-4017-BD91-7BFEB6F59112}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E5CAF2C-20AE-42B0-B54B-6FC1B6F077C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E5CAF2C-20AE-42B0-B54B-6FC1B6F077C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E5CAF2C-20AE-42B0-B54B-6FC1B6F077C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E5CAF2C-20AE-42B0-B54B-6FC1B6F077C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
