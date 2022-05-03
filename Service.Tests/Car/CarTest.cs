@@ -18,6 +18,11 @@ namespace Service.Tests.Car
         public string MessageCar { get; set; }
         public bool SuccessCar { get; set; }
 
+        public string CorCarAlterado { get; set; }
+        public string MarcaCarAlterado { get; set; }
+        public string ModeloCarAlterado { get; set; }
+        public string PlacaCarAlterado { get; set; }
+
         public CarDto carDto;
         public CarCreateDto carCreateDto;
         public CarCreateResultDto carCreateResultDto;
@@ -36,6 +41,10 @@ namespace Service.Tests.Car
             PlacaCar = Faker.Name.Middle();
             MessageCar = Faker.Address.City();
             SuccessCar = Faker.Boolean.Random();
+            CorCarAlterado = Faker.Name.First();
+            MarcaCarAlterado = Faker.Name.FullName();
+            ModeloCarAlterado = Faker.Name.Last();
+            PlacaCarAlterado = Faker.Name.Middle();
 
             for (int i = 0; i < 10; i++)
             {
@@ -88,11 +97,11 @@ namespace Service.Tests.Car
 
             carUpdateDto = new()
             {
-                Cor = CorCar,
+                Cor = CorCarAlterado,
                 Id = IdCar,
-                Marca = MarcaCar,
-                Modelo = ModeloCar,
-                Placa = PlacaCar
+                Marca = MarcaCarAlterado,
+                Modelo = ModeloCarAlterado,
+                Placa = PlacaCarAlterado
             };
 
             carUpdateResultDto = new()
