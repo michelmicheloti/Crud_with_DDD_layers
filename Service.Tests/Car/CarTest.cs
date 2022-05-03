@@ -18,6 +18,12 @@ namespace Service.Tests.Car
         public string MessageCar { get; set; }
         public bool SuccessCar { get; set; }
 
+        public CarDto carDto;
+        public CarCreateDto carCreateDto;
+        public CarCreateResultDto carCreateResultDto;
+        public CarUpdateDto carUpdateDto;
+        public CarUpdateResultDto carUpdateResultDto;
+
         public List<CarEntity> listCarEntity = new();
         public IEnumerable<CarEntityDto> listCarEntityDto = Enumerable.Empty<CarEntityDto>();
         public GetMultipleCarResultDto getMultipleCarResultDto = new();
@@ -57,7 +63,7 @@ namespace Service.Tests.Car
                 Count = listCarEntity.Count,
             };
 
-            CarDto carDto = new()
+            carDto = new()
             {
                 Id = IdCar,
                 Cor = CorCar,
@@ -66,7 +72,7 @@ namespace Service.Tests.Car
                 Placa = PlacaCar
             };
 
-            CarCreateDto carCreateDto = new()
+            carCreateDto = new()
             {
                 Cor = CorCar,
                 Marca = MarcaCar,
@@ -74,13 +80,13 @@ namespace Service.Tests.Car
                 Placa = PlacaCar
             };
 
-            CarCreateResultDto carCreateResultDto = new()
+            carCreateResultDto = new()
             {
                 Message = MessageCar,
                 Success = SuccessCar
             };
 
-            CarUpdateDto carUpdateDto = new()
+            carUpdateDto = new()
             {
                 Cor = CorCar,
                 Id = IdCar,
@@ -89,7 +95,7 @@ namespace Service.Tests.Car
                 Placa = PlacaCar
             };
 
-            CarUpdateResultDto carUpdateResultDto = new()
+            carUpdateResultDto = new()
             {
                 Message = MessageCar,
                 Success = SuccessCar
