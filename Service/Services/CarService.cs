@@ -72,8 +72,10 @@ namespace Service.Services
         {
             try
             {
-                List<CarEntityDto>? entityResult = (await SelectAsync()).Select(car => new CarEntityDto(car))
-                                                                        .ToList();
+                List<CarEntityDto>? entityResult = 
+                                (await SelectAsync())
+                                .Select(car => new CarEntityDto(car))
+                                .ToList();
 
                 return new GetMultipleCarResultDto
                 {
@@ -97,9 +99,10 @@ namespace Service.Services
         {
             try
             {
-                List<CarEntityDto>? entityResult = (await _carRepository.SelectByCorAsync(cor))
-                                                                        .Select(car => new CarEntityDto(car))
-                                                                        .ToList();
+                List<CarEntityDto>? entityResult = 
+                            (await _carRepository.SelectByCorAsync(cor))
+                            .Select(car => new CarEntityDto(car))
+                            .ToList();
 
                 return new GetMultipleCarResultDto
                 {
