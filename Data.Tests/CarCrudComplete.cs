@@ -18,8 +18,8 @@ namespace Data.Tests
             _service = dbTest.ServiceProvider;
         }
 
-        [Fact(DisplayName = "CRUD Car")]
-        [Trait("CRUD", "Car Entity")]
+        [Fact(DisplayName = "É Possivel Executar CRUD")]
+        [Trait("Data", "Car Entity")]
         public async Task E_Possivel_Realizar_Crud_Car()
         {
             using DataContext? context = _service.GetService<DataContext>();
