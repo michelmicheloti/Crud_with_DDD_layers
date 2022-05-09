@@ -31,9 +31,16 @@ pipeline {
                   publishHTML(target: [allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '_ResultHTML', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: 'Code Coverage Report'])
             }
          }
-         stage('Publish'){
+         stage('Build docker image'){
             steps{
-               sh 'dotnet publish Application/Application.csproj --configuration Release --no-restore'
+               sh 'docker build -t crudwithdddlayers .'
+            }
+         }
+         stage('Publish to Heroku'){
+            steps{
+               sh 'heroku container:login'
+               sh 'docker build -t crudwithdddlayers .'
+               sh 'HEROKU_API_KEY=0bd10935-f167-4b4c-bc43-f1c8a0884225 heroku container:release -a crud-eng-soft2 web'
             }
          }
     }
