@@ -38,10 +38,16 @@ pipeline {
          }
          stage('Publish to Heroku'){
             steps{
-               sh 'heroku container:login'
-               sh 'docker build -t crudwithdddlayers .'
                sh 'HEROKU_API_KEY=0bd10935-f167-4b4c-bc43-f1c8a0884225 heroku container:release -a crud-eng-soft2 web'
             }
          }
     }
+    post {
+      always{
+         xunit (
+            thresholds: [ skipped(failureThreshold: '0'), failed(failureThreshold: '0') ],
+            tools: [ BoostTest(pattern: 'boost/*.xml') ]
+         )
+      }
+   }
 }
