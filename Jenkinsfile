@@ -23,8 +23,8 @@ pipeline {
          }
          stage('Install ReportGenerator'){
             steps {
-               sh 'dotnet new tool-manifest
-                   dotnet tool install --local dotnet-reportgenerator-globaltool --version 5.1.6'
+               sh 'dotnet new tool-manifest'
+               sh 'dotnet tool install --local dotnet-reportgenerator-globaltool --version 5.1.6'
             }
          }
          stage('Generate Report'){
