@@ -21,12 +21,6 @@ pipeline {
                sh 'dotnet test --collect:"XPlat Code Coverage" -r \\TestsResult --configuration Release --no-restore'
             }
          }
-         stage('Install ReportGenerator'){
-            steps {
-               sh 'dotnet new tool-manifest'
-               sh 'dotnet tool install --local dotnet-reportgenerator-globaltool --version 5.1.6'
-            }
-         }
          stage('Generate Report'){
             steps {
                sh 'dotnet reportgenerator "-reports:TestsResult/**/*.xml" "-targetDir:_ResultHTML"'
