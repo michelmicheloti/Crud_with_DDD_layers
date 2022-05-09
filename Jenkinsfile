@@ -36,11 +36,11 @@ pipeline {
                sh 'docker build -t crudwithdddlayers .'
             }
          }
-         stage('Publish to Heroku'){
-            steps{
-               sh 'HEROKU_API_KEY=0bd10935-f167-4b4c-bc43-f1c8a0884225 heroku container:release -a crud-eng-soft2 web'
-            }
-         }
+         // stage('Publish to Heroku'){
+         //    steps{
+         //       sh 'HEROKU_API_KEY=0bd10935-f167-4b4c-bc43-f1c8a0884225 heroku container:release -a crud-eng-soft2 web'
+         //    }
+         // }
     }
     post {
       always{
