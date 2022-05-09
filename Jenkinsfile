@@ -23,7 +23,7 @@ pipeline {
          }
          stage('Generate Report'){
             steps {
-               sh 'dotnet reportgenerator "-reports:TestsResult/**/*.xml" "-targetDir:_ResultHTML"'
+               sh 'dotnet restore && dotnet reportgenerator "-reports:TestsResult/**/*.xml" "-targetDir:_ResultHTML"'
             }
          }
          stage('Publish HTML report') {
