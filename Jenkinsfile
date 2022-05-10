@@ -21,11 +21,9 @@ pipeline {
                sh 'dotnet test --collect:"XPlat Code Coverage" -r \\TestsResult --configuration Release --no-restore'
             }
          }
-         stage('Generate Report'){
+         stage('Generate Report'){            
             steps {
-               sh 'System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")'
-            }
-            steps {
+               sh 'System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")'            
                sh 'dotnet tool restore && dotnet reportgenerator "-reports:TestsResult/**/*.xml" "-targetDir:_ResultHTML"'
             }
          }
