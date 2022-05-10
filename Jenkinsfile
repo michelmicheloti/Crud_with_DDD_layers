@@ -22,8 +22,7 @@ pipeline {
             }
          }
          stage('Generate Report'){            
-            steps {
-               sh 'System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")'            
+            steps {          
                sh 'dotnet tool restore && dotnet reportgenerator "-reports:TestsResult/**/*.xml" "-targetDir:_ResultHTML"'
             }
          }
@@ -38,4 +37,9 @@ pipeline {
             }
          }
     }
+    post {
+    always {
+      xunit (testDataPublishers: [[$class: 'ClaimTestDataPublisher']], thresholds: [ skipped(failureThreshold: '0'), failed(failureThreshold: '0')], tools: [[$class: 'MSTestJunitHudsonTestType', pattern: 'TestsResult/**/*.xml']])
+    }
+  }
 }

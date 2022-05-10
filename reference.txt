@@ -6,3 +6,5 @@ https://dev.to/alrobilliard/deploying-net-core-to-heroku-1lfe
 
 https://plugins.jenkins.io/docker-plugin/?msclkid=b2a0a14fcfeb11eca4511cb043afdf30
 
+https://vitux.com/how-to-setup-java_home-path-in-ubuntu/
+
