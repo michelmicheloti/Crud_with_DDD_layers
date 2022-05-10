@@ -21,6 +21,15 @@ pipeline {
         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '_ResultHTML', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: 'Code Coverage Report'])
       }
     }
-
-  }
+    stage('Test: xUnit') {
+      steps {
+            sh 'dotnet test -l:trx || true'
+         }  
+      }
+   }
+   post {
+      always {
+         xunit (testDataPublishers: [[$class: 'ClaimTestDataPublisher']], thresholds: [ skipped(failureThreshold: '0'), failed(failureThreshold: '0')], tools: [[$class: 'MSTestJunitHudsonTestType', pattern: '**/*.trx']])
+      }
+   }
 }
