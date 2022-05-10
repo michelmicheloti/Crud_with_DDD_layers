@@ -26,13 +26,6 @@ pipeline {
                sh 'System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "") && dotnet tool restore && dotnet reportgenerator "-reports:TestsResult/**/*.xml" "-targetDir:_ResultHTML"'
             }
          }
-         stage('xUnit Report'){
-            step([$class: 'XUnitBuilder',
-                  thresholds: [[$class: 'FailedThreshold', unstableThreshold: '1']],
-                  tools: [[$class: 'XUnitDotNetTestType', pattern: 'TestsResult/**/*.xml']]
-                  ]
-            )
-         }
          stage('Publish HTML report') {
             steps {
                   publishHTML(target: [allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '_ResultHTML', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: 'Code Coverage Report'])
@@ -40,8 +33,16 @@ pipeline {
          }
          stage('Build docker image'){
             steps{
-               sh ' sudo chmod 666 /var/run/docker.sock && docker build -t crudwithdddlayers .'
+               sh 'docker build -t crudwithdddlayers .'
             }
          }
+    }
+    post {
+        always{
+            xunit (
+                thresholds: [ skipped(failureThreshold: '0'), failed(failureThreshold: '0') ],
+                tools: [ BoostTest(pattern: 'TestsResult/**/*.xml') ]
+            )
+        }
     }
 }
