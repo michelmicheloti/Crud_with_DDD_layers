@@ -37,9 +37,9 @@ pipeline {
          //    }
          // }
     }
-    post {
-    always {
-      xunit (testDataPublishers: [[$class: 'ClaimTestDataPublisher']], thresholds: [ skipped(failureThreshold: '0'), failed(failureThreshold: '0')], tools: [[$class: 'MSTestJunitHudsonTestType', pattern: 'TestsResult/**/*.xml']])
-    }
-  }
+//     post {
+//     always {
+//       xunit (testDataPublishers: [[$class: 'ClaimTestDataPublisher']], thresholds: [ skipped(failureThreshold: '0'), failed(failureThreshold: '0')], tools: [[$class: 'MSTestJunitHudsonTestType', pattern: 'TestsResult/**/*.xml']])
+//     }
+//   }
 }
