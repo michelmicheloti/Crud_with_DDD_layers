@@ -23,7 +23,10 @@ pipeline {
          }
          stage('Generate Report'){
             steps {
-               sh 'System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "") && dotnet tool restore && dotnet reportgenerator "-reports:TestsResult/**/*.xml" "-targetDir:_ResultHTML"'
+               sh 'System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")'
+            }
+            steps {
+               sh 'dotnet tool restore && dotnet reportgenerator "-reports:TestsResult/**/*.xml" "-targetDir:_ResultHTML"'
             }
          }
          stage('Publish HTML report') {
