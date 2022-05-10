@@ -13,15 +13,9 @@ pipeline {
     stage('Test: Unit Test') {
       steps {
         sh 'dotnet test --collect:"XPlat Code Coverage" -r \\TestsResult --configuration Release --no-restore'
-      }
-    }
-
-    stage('Generate Report') {
-      steps {
         sh 'dotnet tool restore && dotnet reportgenerator "-reports:TestsResult/**/*.xml" "-targetDir:_ResultHTML"'
       }
     }
-
     stage('Publish HTML report') {
       steps {
         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '_ResultHTML', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: 'Code Coverage Report'])
