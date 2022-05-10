@@ -23,8 +23,16 @@ pipeline {
          }
          stage('Generate Report'){
             steps {
+               sh 'System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")'
                sh 'dotnet tool restore && dotnet reportgenerator "-reports:TestsResult/**/*.xml" "-targetDir:_ResultHTML"'
             }
+         }
+         stage('xUnit Report'){
+            step([$class: 'XUnitBuilder',
+                  thresholds: [[$class: 'FailedThreshold', unstableThreshold: '1']],
+                  tools: [[$class: 'XUnitDotNetTestType', pattern: 'TestsResult/**/*.xml']]
+                  ]
+            )
          }
          stage('Publish HTML report') {
             steps {
@@ -37,12 +45,4 @@ pipeline {
             }
          }
     }
-    post {
-      always{
-         xunit (
-            thresholds: [ skipped(failureThreshold: '0'), failed(failureThreshold: '0') ],
-            tools: [ BoostTest(pattern: 'boost/*.xml') ]
-         )
-      }
-   }
 }

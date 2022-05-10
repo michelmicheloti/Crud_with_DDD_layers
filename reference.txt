@@ -1,0 +1,8 @@
+https://medium.com/southworks/creating-a-jenkins-pipeline-for-a-net-core-application-937a2165b073
+
+https://stackoverflow.com/questions/35783964/jenkins-html-publisher-plugin-no-css-is-displayed-when-report-is-viewed-in-j#:~:text=A%20solution%20to%20solve%20this,you%20will%20have%20to%20check.
+
+https://dev.to/alrobilliard/deploying-net-core-to-heroku-1lfe
+
+https://plugins.jenkins.io/docker-plugin/?msclkid=b2a0a14fcfeb11eca4511cb043afdf30
+
