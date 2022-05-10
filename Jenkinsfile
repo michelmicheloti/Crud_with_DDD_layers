@@ -23,8 +23,7 @@ pipeline {
          }
          stage('Generate Report'){
             steps {
-               sh 'System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")'
-               sh 'dotnet tool restore && dotnet reportgenerator "-reports:TestsResult/**/*.xml" "-targetDir:_ResultHTML"'
+               sh 'System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "") && dotnet tool restore && dotnet reportgenerator "-reports:TestsResult/**/*.xml" "-targetDir:_ResultHTML"'
             }
          }
          stage('xUnit Report'){
@@ -41,7 +40,7 @@ pipeline {
          }
          stage('Build docker image'){
             steps{
-               sh 'docker build -t crudwithdddlayers .'
+               sh ' sudo chmod 666 /var/run/docker.sock && docker build -t crudwithdddlayers .'
             }
          }
     }
