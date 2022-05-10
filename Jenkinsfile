@@ -1,10 +1,12 @@
 pipeline {
   agent any
+  options {
+    allowBrokenBuildClaiming()
+  }
   stages {
     stage('Restore packages') {
       steps {
         sh 'dotnet restore API.sln'
-        sh 'dotnet clean API.sln --configuration Release'
         sh 'dotnet clean API.sln --configuration Release'
         sh 'dotnet build API.sln --configuration Release --no-restore'
       }
@@ -23,7 +25,7 @@ pipeline {
     }
     stage('Test: xUnit') {
       steps {
-            sh 'dotnet test -l:trx || true'
+            sh 'dotnet test -l:trx'
          }  
       }
    }
