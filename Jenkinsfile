@@ -5,17 +5,7 @@ pipeline {
       steps {
         sh 'dotnet restore API.sln'
         sh 'dotnet clean API.sln --configuration Release'
-      }
-    }
-
-    stage('Clean') {
-      steps {
         sh 'dotnet clean API.sln --configuration Release'
-      }
-    }
-
-    stage('Build') {
-      steps {
         sh 'dotnet build API.sln --configuration Release --no-restore'
       }
     }
