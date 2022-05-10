@@ -31,11 +31,11 @@ pipeline {
                   publishHTML(target: [allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '_ResultHTML', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: 'Code Coverage Report'])
             }
          }
-         stage('Build docker image'){
-            steps{
-               sh 'docker build -t crudwithdddlayers .'
-            }
-         }
+         // stage('Build docker image'){
+         //    steps{
+         //       sh 'docker build -t crudwithdddlayers .'
+         //    }
+         // }
     }
     post {
     always {
