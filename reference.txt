@@ -8,3 +8,7 @@ https://plugins.jenkins.io/docker-plugin/?msclkid=b2a0a14fcfeb11eca4511cb043afdf
 
 https://vitux.com/how-to-setup-java_home-path-in-ubuntu/
 
+# Para ativar o CSS do HTMLPublish
+sudo vi /etc/default/jenkins
+JAVA_ARGS="-Djava.awt.headless=true -Dhudson.model.DirectoryBrowserSupport.CSP=\"default-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src 'self' 'unsafe-inline' data:;\""
+
