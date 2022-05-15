@@ -6,6 +6,7 @@ WORKDIR /app
 # Copy everything else and build
 COPY . .
 RUN dotnet restore
+RUN dotnet clean && dotnet build
 RUN dotnet publish -c Release -o out
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine as runtime
