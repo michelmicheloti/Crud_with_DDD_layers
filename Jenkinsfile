@@ -28,6 +28,12 @@ pipeline {
         sh 'docker build -t crudwithdddlayers .'
       }
     }
+    stage('Push image to Heroku'){
+      steps{
+        sh 'heroku container:push -a crud-eng-soft2 web'
+        sh 'heroku container:release -a crud-eng-soft2 web'
+      }
+    }
   }
   post {
     always {
