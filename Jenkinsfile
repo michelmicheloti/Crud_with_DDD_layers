@@ -25,6 +25,7 @@ pipeline {
     }
     stage('Build docker image'){
       steps{
+        // sh ''
         sh 'docker build -t crudwithdddlayers .'
       }
     }
