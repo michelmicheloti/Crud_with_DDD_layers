@@ -6,6 +6,7 @@ pipeline {
   stages {
     stage('Restore packages') {
       steps {
+        sh 'heroku auth:token'
         sh 'dotnet restore API.sln'
         sh 'dotnet clean API.sln --configuration Release'
         sh 'dotnet build API.sln --configuration Release --no-restore'
