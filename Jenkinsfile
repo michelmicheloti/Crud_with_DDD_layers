@@ -11,6 +11,7 @@ pipeline {
             withCredentials([usernamePassword(credentialsId:'herokuid',usernameVariable:'USR',passwordVariable:'PWD')]){
               sh '(echo "${env.USR}" echo "${env.PWD}") | heroku login -i'
             }
+            sh 'HEROKU_API_KEY=$HEROKU_API_TOKEN heroku login'
         }
     }
     stage('Restore packages') {
