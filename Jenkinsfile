@@ -1,12 +1,20 @@
 pipeline {
   agent any
+  tools {nodejs "node"}
   options {
     allowBrokenBuildClaiming()
   }
   stages {
+    stage('Set up Heroku'){
+        steps{
+            sh 'npm install -g heroku'
+            withCredentials([usernamePassword(credentialsId:'herokuid',usernameVariable:'USR',passwordVariable:'PWD')]){
+              sh '(echo "${env.USR}" echo "${env.PWD}") | heroku login -i'
+            }
+        }
+    }
     stage('Restore packages') {
       steps {
-        sh 'heroku auth:token'
         sh 'dotnet restore API.sln'
         sh 'dotnet clean API.sln --configuration Release'
         sh 'dotnet build API.sln --configuration Release --no-restore'

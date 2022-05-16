@@ -12,3 +12,5 @@ https://vitux.com/how-to-setup-java_home-path-in-ubuntu/
 sudo vi /etc/default/jenkins
 JAVA_ARGS="-Djava.awt.headless=true -Dhudson.model.DirectoryBrowserSupport.CSP=\"default-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src 'self' 'unsafe-inline' data:;\""
 
+sudo chmod 666 /var/run/docker.sock
+
