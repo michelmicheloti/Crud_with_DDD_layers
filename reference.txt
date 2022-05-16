@@ -14,3 +14,5 @@ JAVA_ARGS="-Djava.awt.headless=true -Dhudson.model.DirectoryBrowserSupport.CSP=\
 
 sudo chmod 666 /var/run/docker.sock
 
+$(cd /var/lib/jenkins ; sh heroku.sh)
+
