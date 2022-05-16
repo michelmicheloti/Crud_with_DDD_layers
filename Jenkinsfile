@@ -6,13 +6,17 @@ pipeline {
   }
   stages {
     stage('Set up Heroku'){
-        steps{
-            sh 'npm install -g heroku'
-            withCredentials([usernamePassword(credentialsId:'herokuid',usernameVariable:'USR',passwordVariable:'PWD')]){
-              sh '(echo "${env.USR}" echo "${env.PWD}") | heroku login -i'
-            }
-            sh 'HEROKU_API_KEY=$HEROKU_API_TOKEN heroku login'
-        }
+      environment{
+        heroku = credentials('heroku_login')
+      }
+      steps{
+          sh 'npm install -g heroku'
+          // withCredentials([usernamePassword(credentialsId:'herokuid',usernameVariable:'USR',passwordVariable:'PWD')]){
+          //   sh '(echo "${env.USR}" echo "${env.PWD}") | heroku login -i'
+          // }
+          // sh 'HEROKU_API_KEY=$HEROKU_API_TOKEN heroku login'
+          sh 'echo "${heroku_USR}" echo "${heroku_PWD}") | heroku login -i'
+      }
     }
     stage('Restore packages') {
       steps {
