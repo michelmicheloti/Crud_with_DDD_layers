@@ -15,7 +15,7 @@ pipeline {
           //   sh '(echo "${env.USR}" echo "${env.PWD}") | heroku login -i'
           // }
           // sh 'HEROKU_API_KEY=$HEROKU_API_TOKEN heroku login'
-          sh 'echo "${heroku_USR}" echo "${heroku_PWD}") | heroku login -i'
+          sh '(echo "${heroku_USR}" echo "${heroku_PWD}") | heroku login -i'
       }
     }
     stage('Restore packages') {
