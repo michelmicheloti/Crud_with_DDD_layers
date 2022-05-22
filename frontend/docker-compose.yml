@@ -1,0 +1,16 @@
+# for local development
+version: '3'
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: .
+      target: 'develop-stage'
+      # target: 'build-stage'
+      # target: 'production-stage'
+    ports:
+    - '8080:8080'
+    - '80:80'
+    volumes:
+    - './src:/app/src'
+    command: /bin/sh -c "npm run serve"
