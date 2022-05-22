@@ -6,27 +6,29 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Xunit;
 
-namespace Application.Tests;
+namespace Application.Tests.QuandoRequisitarCreate;
 
-public class CarControllerTest
+public class CreateBadRequest
+
 {
     private CarController? _controller;
 
-    [Fact(DisplayName = "Foi possível criar um carro")]
-    public async Task CreateCar()
+    [Fact(DisplayName = "Não é possível realizar o create")]
+    public async Task Nao_E_Possivel_Invocar_Controller_Create()
     {
 
         var service = new Mock<ICarService>();
         service.Setup(m => m.CreateCarAsync(It.IsAny<CarCreateDto>())).ReturnsAsync(
-
-        new CarCreateResultDto
-        {
-            Message = "Success",
-            Success = true,
-        }
+            new CarCreateResultDto
+            {
+                Message = "Error",
+                Success = false,
+            }
         );
 
         _controller = new CarController(service.Object);
+        _controller.ModelState.AddModelError("Error", "Internal Error");
+
         CarCreateDto carCreateDto = new()
         {
             Cor = "Rosa",
@@ -36,6 +38,7 @@ public class CarControllerTest
         };
         var result = await _controller.CreateCar(carCreateDto);
 
-        Assert.True(result is OkObjectResult);
+        Assert.True(result is BadRequestObjectResult);
+        Assert.False(_controller.ModelState.IsValid);
     }
 }

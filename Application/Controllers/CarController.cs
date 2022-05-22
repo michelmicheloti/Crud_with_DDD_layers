@@ -79,7 +79,7 @@ namespace Application.Controllers
         [HttpPut("Put/")]
         [ProducesResponseType(typeof(CarUpdateResultDto), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(CarUpdateResultDto), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> DisableCar([FromBody] CarUpdateDto car)
+        public async Task<IActionResult> UpdateCar([FromBody] CarUpdateDto car)
         {
             CarUpdateResultDto? result = await _CarService.UpdateCarAsync(car);
 

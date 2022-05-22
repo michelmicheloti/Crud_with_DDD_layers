@@ -8,6 +8,15 @@ https://plugins.jenkins.io/docker-plugin/?msclkid=b2a0a14fcfeb11eca4511cb043afdf
 
 https://vitux.com/how-to-setup-java_home-path-in-ubuntu/
 
+https://www.endycahyono.com/article/aspnetcore3-running-under-subdirectory-on-nginx
+
+https://tutexchange.com/how-to-host-asp-net-core-app-on-linux-with-nginx-webserver/
+
+https://www.digitalocean.com/community/tutorials/how-to-deploy-an-asp-net-core-application-with-mysql-server-using-nginx-on-ubuntu-18-04
+
+**** tentar esse
+https://faun.pub/net-core-projects-ci-cd-with-jenkins-ubuntu-and-nginx-642aa9d272c9
+
 # Para ativar o CSS do HTMLPublish
 sudo vi /etc/default/jenkins
 JAVA_ARGS="-Djava.awt.headless=true -Dhudson.model.DirectoryBrowserSupport.CSP=\"default-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src 'self' 'unsafe-inline' data:;\""
