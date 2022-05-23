@@ -15,6 +15,6 @@ COPY --from=build /app/out .
 # Use your project name for the second parameter
 # e.g. MyProject.dll
 # LocalHost/docker
-ENTRYPOINT ["dotnet", "Application.dll"]
+# ENTRYPOINT ["dotnet", "Application.dll"]
 # Heroku
-# CMD ASPNETCORE_URLS=http://*:$PORT dotnet Application.dll
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet Application.dll

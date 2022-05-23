@@ -1,32 +1,59 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view />
+  <div id="main">
+    <Header></Header>
+    <Content></Content>
+    <Footer></Footer>
   </div>
 </template>
 
+<script>
+// import axios from "./config/axios";
+import Header from "./components/Header.vue";
+import Content from "./components/Content.vue";
+import Footer from "./components/Footer.vue";
+
+export default {
+  name: "App",
+  components: { Header, Content, Footer },
+  data: function () {
+    return {};
+  },
+  methods: {},
+  created() {},
+};
+</script>
+
 <style>
+body {
+  margin: 0;
+  padding: 0;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
 }
 
-nav {
-  padding: 30px;
+#main {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 64px 1fr 60px;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "header"
+    "content"
+    "footer";
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+#main.hide-template {
+  grid-template-areas:
+    "content"
+    "content"
+    "content";
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
+.table {
+  color: white !important;
 }
 </style>

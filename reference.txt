@@ -25,3 +25,6 @@ sudo chmod 666 /var/run/docker.sock
 
 $(cd /var/lib/jenkins ; sh heroku.sh)
 
+
+heroku container:release -a crud-eng-soft2 web
+
