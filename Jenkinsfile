@@ -23,6 +23,15 @@ pipeline {
         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '_ResultHTML', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: 'Code Coverage Report'])
       }
     }    
+    stage('Publish in NGINX'){
+      steps{
+        sh('sudo systemctl stop kestrel-Crud-ddd.service')
+        sh('sudo service nginx stop')
+        sh('dotnet publih --configuration release')
+        sh('sudo systemctl start kestrel-Crud-ddd.service')
+        sh('sudo service nginx start')
+      }
+    }
     // stage('Build docker image'){
     //   steps{
     //     sh 'docker build -t crudwithdddlayers .'
