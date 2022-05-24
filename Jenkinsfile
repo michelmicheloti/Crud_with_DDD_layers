@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('Teste'){
       steps{
-        dir ('~/Projects/Crud_with_DDD_layers') { 
+        dir ('home/mix/Projects/Crud_with_DDD_layers') { 
           sh('pwd')
         }
       }
