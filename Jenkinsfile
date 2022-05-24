@@ -6,10 +6,11 @@ pipeline {
   stages {
     stage('Teste'){
       steps{
-        dir ('home/mix/Projects/Crud_with_DDD_layers') { 
-          sh('cd home/mix/Projects/Crud_with_DDD_layers')
-          sh('pwd')
-        }
+        // dir ('home/mix/Projects/Crud_with_DDD_layers') { 
+        //   sh('cd home/mix/Projects/Crud_with_DDD_layers')
+        //   sh('pwd')
+        // }
+        sh('cd home/mix/Projects/Crud_with_DDD_layers ; sh heroku.sh')
       }
     }
     // stage('Restore packages') {
