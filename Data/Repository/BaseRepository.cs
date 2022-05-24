@@ -60,7 +60,7 @@ namespace Data.Repository
         {
             try
             {
-                T? result = await _dataset.AsNoTracking().FirstOrDefaultAsync(p => p.Id.Equals(entity.Id));
+                T? result = await _dataset.SingleOrDefaultAsync(p => p.Id.Equals(entity.Id));
 
                 if (result == null) { return null; }
 
