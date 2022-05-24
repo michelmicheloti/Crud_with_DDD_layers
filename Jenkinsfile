@@ -10,7 +10,7 @@ pipeline {
         //   sh('cd home/mix/Projects/Crud_with_DDD_layers')
         //   sh('pwd')
         // }
-        sh('cd home/mix/Projects/Crud_with_DDD_layers ; sh heroku.sh')
+        sh("""home/mix/Projects/Crud_with_DDD_layers/heroku.sh""")
       }
     }
     // stage('Restore packages') {
