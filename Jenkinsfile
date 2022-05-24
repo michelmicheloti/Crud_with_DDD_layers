@@ -7,6 +7,7 @@ pipeline {
     stage('Teste'){
       steps{
         dir ('home/mix/Projects/Crud_with_DDD_layers') { 
+          sh('cd home/mix/Projects/Crud_with_DDD_layers')
           sh('pwd')
         }
       }
