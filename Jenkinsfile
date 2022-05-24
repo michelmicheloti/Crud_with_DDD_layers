@@ -27,7 +27,7 @@ pipeline {
       steps{
         sh('sudo systemctl stop kestrel-Crud-ddd.service')
         sh('sudo service nginx stop')
-        sh('dotnet publih --configuration release')
+        sh('dotnet publish -c Release -o out')
         sh('sudo systemctl start kestrel-Crud-ddd.service')
         sh('sudo service nginx start')
       }
