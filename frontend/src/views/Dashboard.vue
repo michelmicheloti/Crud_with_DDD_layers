@@ -23,106 +23,98 @@
           placeholder="Digite a Placa"
         ></b-form-input>
       </div>
-      <b-overlay
-        :show="buttonLoad"
-        rounded
-        opacity="0.6"
-        spinner-small
-        spinner-variant="primary"
-        class="d-inline-block"
-      >
-        <b-button class="mt-3" size="lg" variant="primary" @click="save">
-          Enviar
-        </b-button>
-      </b-overlay>
-      <!-- Tabela -->
-      <b-container fluid>
-        <b-row>
-          <b-col sm="6" md="6" class="my-1 pl-0">
-            <b-form-group
-              label="Por Página"
-              label-for="pageSelect"
-              label-cols-sm="7"
-              label-cols-md="5"
-              label-cols-lg="4"
-              label-cols-xl="3"
-              label-align-sm="left pr-0"
-              label-size="sm"
-              class="mb-0 text-white lbl-page"
-            >
-              <b-form-select
-                class="selectPage"
-                id="pageSelect"
-                v-model="perPage"
-                :options="pageOptions"
-                size="sm"
-              >
-              </b-form-select>
-            </b-form-group>
-          </b-col>
-
-          <b-col sm="6" md="6" class="my-1 pr-0 pl-0">
-            <b-form-group
-              label="Filtrar:"
-              label-for="filter-input"
-              label-cols-sm="6"
-              label-cols-md="3"
-              label-align-sm="right"
-              label-size="sm"
-              class="mb-3 text-white"
-            >
-              <b-input-group size="sm">
-                <b-form-input
-                  id="filter-input"
-                  v-model="filter"
-                  type="search"
-                  placeholder="Pesquisar"
-                ></b-form-input>
-
-                <b-input-group-append>
-                  <b-button :disabled="!filter" @click="filter = ''"
-                    ><em class="fa fa-refresh"></em
-                  ></b-button>
-                </b-input-group-append>
-              </b-input-group>
-            </b-form-group>
-          </b-col>
-        </b-row>
-      </b-container>
-      <b-table
-        head-variant="light"
-        hover
-        sticky-header
-        striped
-        :current-page="currentPage"
-        :fields="fields"
-        :filter="filter"
-        :items="cars"
-        :per-page="perPage"
-      >
-        <template #cell(actions)="data">
-          <b-button variant="light" @click="remove(data.item.id)">
-            <em class="fa fa-trash"></em>
-          </b-button>
-        </template>
-      </b-table>
-      <b-col
-        sm="7"
-        md="6"
-        class="my-1"
-        style="margin-left: auto; margin-right: auto"
-      >
-        <b-pagination
-          v-model="currentPage"
-          :total-rows="totalRows"
-          :per-page="perPage"
-          align="fill"
-          size="sm"
-          class="my-0"
-        ></b-pagination>
-      </b-col>
-      <!-- Tabela -->
+      <b-button class="mt-3 mb-5" size="lg" variant="primary" @click="save">
+        Enviar
+      </b-button>
     </b-form>
+    <!-- Tabela -->
+    <b-container fluid>
+      <b-row>
+        <b-col sm="6" md="6" class="my-1 pl-0">
+          <b-form-group
+            label="Por Página"
+            label-for="pageSelect"
+            label-cols-sm="7"
+            label-cols-md="5"
+            label-cols-lg="4"
+            label-cols-xl="3"
+            label-align-sm="left pr-0"
+            label-size="sm"
+            class="mb-0 text-white lbl-page"
+          >
+            <b-form-select
+              class="selectPage"
+              id="pageSelect"
+              v-model="perPage"
+              :options="pageOptions"
+              size="sm"
+            >
+            </b-form-select>
+          </b-form-group>
+        </b-col>
+
+        <b-col sm="6" md="6" class="my-1 pr-0 pl-0">
+          <b-form-group
+            label="Filtrar:"
+            label-for="filter-input"
+            label-cols-sm="6"
+            label-cols-md="3"
+            label-align-sm="right"
+            label-size="sm"
+            class="mb-3 text-white"
+          >
+            <b-input-group size="sm">
+              <b-form-input
+                id="filter-input"
+                v-model="filter"
+                type="search"
+                placeholder="Pesquisar"
+              ></b-form-input>
+
+              <b-input-group-append>
+                <b-button :disabled="!filter" @click="filter = ''"
+                  ><em class="fa fa-refresh"></em
+                ></b-button>
+              </b-input-group-append>
+            </b-input-group>
+          </b-form-group>
+        </b-col>
+      </b-row>
+    </b-container>
+    <b-table
+      head-variant="dark"
+      hover
+      sticky-header
+      striped
+      :current-page="currentPage"
+      :fields="fields"
+      :filter="filter"
+      :items="cars"
+      :per-page="perPage"
+    >
+      <template #cell(actions)="data">
+        <b-button variant="light" @click="remove(data.item.id)">
+          <em class="fa fa-trash"></em>
+        </b-button>
+      </template>
+    </b-table>
+    <b-col
+      sm="7"
+      md="6"
+      class="my-1"
+      style="margin-left: auto; margin-right: auto"
+    >
+      <b-pagination
+        v-model="currentPage"
+        :total-rows="totalRows"
+        :per-page="perPage"
+        align="fill"
+        size="sm"
+        class="my-0"
+      ></b-pagination>
+    </b-col>
+    <!-- Tabela -->
+    <b-overlay :show="buttonLoad" no-wrap></b-overlay>
   </b-container>
 </template>
 
