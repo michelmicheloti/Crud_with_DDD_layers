@@ -46,32 +46,32 @@ namespace Application.Configuration
             //         ValidIssuer = appSettings.Issuer
             //     };
             // });
-            byte[] key = Encoding.ASCII.GetBytes(configuration["AppSettings:Secret"]);
+            // byte[] key = Encoding.ASCII.GetBytes(configuration["Authentication:Secret"]);
 
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(bearerOptions =>
-            {
-                bearerOptions.RequireHttpsMetadata = true;
-                bearerOptions.SaveToken = true;
-                bearerOptions.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidAudience = configuration["AppSettings:Audience"],
-                    ValidIssuer = configuration["AppSettings:Issuer"]
-                };
-            });
+            // services.AddAuthentication(options =>
+            // {
+            //     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            //     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            // }).AddJwtBearer(bearerOptions =>
+            // {
+            //     bearerOptions.RequireHttpsMetadata = true;
+            //     bearerOptions.SaveToken = true;
+            //     bearerOptions.TokenValidationParameters = new TokenValidationParameters
+            //     {
+            //         ValidateIssuerSigningKey = true,
+            //         IssuerSigningKey = new SymmetricSecurityKey(key),
+            //         ValidateIssuer = true,
+            //         ValidateAudience = true,
+            //         ValidAudience = configuration["Authentication:Audience"],
+            //         ValidIssuer = configuration["Authentication:Issuer"]
+            //     };
+            // });
 
             // Ativa o uso do token como forma de autorizar o acesso
             // a recursos deste projeto
-            services.AddAuthorization(auth => auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
-                    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme‌​)
-                    .RequireAuthenticatedUser().Build()));
+            // services.AddAuthorization(auth => auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
+            //         .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme‌​)
+            //         .RequireAuthenticatedUser().Build()));
 
             return services;
         }
