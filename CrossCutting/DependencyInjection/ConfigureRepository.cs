@@ -17,7 +17,7 @@ namespace CrossCutting.DependencyInjection
 
             serviceColletion.AddScoped<ICarRepository, CarImplementation>();
 
-            IConfiguration databaseConfiguration = new ConfigurationBuilder().AddJsonFile("database.json").Build();
+            // IConfiguration databaseConfiguration = new ConfigurationBuilder().AddJsonFile("database.json").Build();
 
             serviceColletion.AddDbContext<DataContext>(
                     options => options.UseLazyLoadingProxies()
