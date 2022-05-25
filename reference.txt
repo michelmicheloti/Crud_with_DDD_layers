@@ -36,3 +36,5 @@ heroku container:release -a crud-eng-soft2 web
 
 sudo journalctl -fu kestrel-helloapp.service
 
+sudo chmod 777 -R /var/lib/jenkins/workspace/Crud_with_DDD_layers_main/out/
+
