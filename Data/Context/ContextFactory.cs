@@ -18,7 +18,7 @@ namespace Data.Context
 
             DbContextOptionsBuilder<DataContext> optionsBuilder = new();
 
-            optionsBuilder.UseSqlite(databaseConfiguration.GetConnectionString("DefaultConnection"));
+            optionsBuilder.UseLazyLoadingProxies().UseSqlite(databaseConfiguration.GetConnectionString("DefaultConnection"));
                         //   .UseSqlServer(databaseConfiguration.GetConnectionString("DefaultConnection"));
 
             return new DataContext(optionsBuilder.Options);

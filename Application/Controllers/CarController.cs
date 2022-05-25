@@ -86,7 +86,7 @@ namespace Application.Controllers
             return result.Success ? Ok(result) : BadRequest(result);
         }
 
-        // [ApiExplorerSettings(IgnoreApi = true)]
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpDelete("Delete/{id}")]
         [ProducesResponseType(typeof(CarUpdateResultDto), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(CarUpdateResultDto), StatusCodes.Status400BadRequest)]
