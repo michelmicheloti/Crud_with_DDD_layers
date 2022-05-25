@@ -17,6 +17,8 @@ https://www.digitalocean.com/community/tutorials/how-to-deploy-an-asp-net-core-a
 **** tentar esse
 https://faun.pub/net-core-projects-ci-cd-with-jenkins-ubuntu-and-nginx-642aa9d272c9
 
+https://linuxhandbook.com/system-has-not-been-booted-with-systemd/
+
 # Para ativar o CSS do HTMLPublish
 sudo vi /etc/default/jenkins
 JAVA_ARGS="-Djava.awt.headless=true -Dhudson.model.DirectoryBrowserSupport.CSP=\"default-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src 'self' 'unsafe-inline' data:;\""
@@ -29,4 +31,12 @@ heroku login
 heroku container:login
 heroku container:push -a crud-eng-soft2 web
 heroku container:release -a crud-eng-soft2 web
+
+Systemd command	                        Sysvinit command
+systemctl start service_name	service service_name start
+systemctl stop service_name	    service service_name stop
+systemctl restart service_name	service service_name restart
+systemctl status service_name	service service_name status
+systemctl enable service_name	chkconfig service_name on
+systemctl disable service_name	chkconfig service_name off
 

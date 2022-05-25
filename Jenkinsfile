@@ -25,10 +25,10 @@ pipeline {
     }    
     stage('Publish in NGINX'){
       steps{
-        sh('sudo systemctl stop kestrel-Crud-ddd.service')
+        sh('sudo service kestrel-Jenkins-test.service stop')
         sh('sudo service nginx stop')
         sh('dotnet publish -c Release -o out')
-        sh('sudo systemctl start kestrel-Crud-ddd.service')
+        sh('sudo service kestrel-Jenkins-test.service start')
         sh('sudo service nginx start')
       }
     }
