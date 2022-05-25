@@ -36,6 +36,7 @@ namespace Application.Controllers
             return result.Success ? Ok(result) : BadRequest(result);
         }
 
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet("Get/All/Cor/{cor}")]
         [ProducesResponseType(typeof(GetMultipleCarResultDto), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(GetMultipleCarResultDto), StatusCodes.Status400BadRequest)]
@@ -46,6 +47,7 @@ namespace Application.Controllers
             return result.Success ? Ok(result) : BadRequest(result);
         }
 
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet("Get/All/Marca/{marca}")]
         [ProducesResponseType(typeof(GetMultipleCarResultDto), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(GetMultipleCarResultDto), StatusCodes.Status400BadRequest)]
@@ -56,6 +58,7 @@ namespace Application.Controllers
             return result.Success ? Ok(result) : BadRequest(result);
         }
 
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet("Get/All/Modelo/{modelo}")]
         [ProducesResponseType(typeof(GetMultipleCarResultDto), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(GetMultipleCarResultDto), StatusCodes.Status400BadRequest)]
@@ -66,6 +69,7 @@ namespace Application.Controllers
             return result.Success ? Ok(result) : BadRequest(result);
         }
 
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet("Get/All/Placa/{placa}")]
         [ProducesResponseType(typeof(GetMultipleCarResultDto), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(GetMultipleCarResultDto), StatusCodes.Status400BadRequest)]

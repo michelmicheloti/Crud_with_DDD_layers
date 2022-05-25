@@ -28,6 +28,7 @@ pipeline {
         sh('sudo service crud stop')
         sh('sudo service nginx stop')
         sh('dotnet publish -c Release -o out')
+        sh('sudo chmod 777 -R /var/lib/jenkins/workspace/Crud_with_DDD_layers_main/out/')
         sh('sudo service crud start')
         sh('sudo service nginx start')
       }
