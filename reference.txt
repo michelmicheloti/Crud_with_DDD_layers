@@ -34,3 +34,5 @@ heroku container:login
 heroku container:push -a crud-eng-soft2 web
 heroku container:release -a crud-eng-soft2 web
 
+sudo journalctl -fu kestrel-helloapp.service
+
