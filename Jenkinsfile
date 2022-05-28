@@ -23,6 +23,11 @@ pipeline {
         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '_ResultHTML', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: 'Code Coverage Report'])
       }
     }    
+    stage('Build docker image'){
+      steps{
+        sh 'docker build -t crudwithdddlayers .'
+      }
+    }
     stage('Publish in NGINX'){
       steps{
         sh('sudo service crud stop')
@@ -33,11 +38,6 @@ pipeline {
         sh('sudo service nginx start')
       }
     }
-    // stage('Build docker image'){
-    //   steps{
-    //     sh 'docker build -t crudwithdddlayers .'
-    //   }
-    // }
   }
   post {
     always {
