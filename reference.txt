@@ -19,6 +19,8 @@ https://faun.pub/net-core-projects-ci-cd-with-jenkins-ubuntu-and-nginx-642aa9d27
 
 https://linuxhandbook.com/system-has-not-been-booted-with-systemd/
 
+https://swimburger.net/blog/dotnet/how-to-run-aspnet-core-as-a-service-on-linux
+
 https://www.youtube.com/watch?v=WUzEJuBYtY0
 
 # Para ativar o CSS do HTMLPublish
