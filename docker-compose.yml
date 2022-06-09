@@ -1,0 +1,23 @@
+version: '3.3'
+services:
+  webapi:
+    image: webapi
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "8080:80"
+
+  frontend:
+    image: frontend
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./frontend/Dockerfile
+      args:
+        VUE_APP_API_URL: http://localhost:8080
+    ports:
+      - "8081:80"
+    depends_on:
+      - webapi
