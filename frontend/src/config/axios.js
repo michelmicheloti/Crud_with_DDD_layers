@@ -10,7 +10,8 @@ const error = (err) => {
 };
 
 axios.create({});
-axios.defaults.baseURL = "https://crud-eng-soft2.herokuapp.com/api";
+// axios.defaults.baseURL = "https://crud-eng-soft2.herokuapp.com/api";
+axios.defaults.baseURL = "http://localhost:8080/api";
 axios.interceptors.response.use(success, error);
 
 export default axios;
